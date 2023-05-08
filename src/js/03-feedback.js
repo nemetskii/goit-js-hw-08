@@ -5,6 +5,7 @@ const emailInput = document.querySelector("input[type='email']");
 const messageInput = document.querySelector("textarea[name='message']");
 const LOCAL_STORAGE_KEY = 'feedback-form-state';
 const dataStorage = {};
+
 updateData();
 
 form.addEventListener('input', throttle(OnFormInput, 500));
@@ -24,7 +25,7 @@ function updateData() {
   const inputArray = localStorage.getItem(LOCAL_STORAGE_KEY);
   if (inputArray) {
     const storage = JSON.parse(inputArray);
-    emailInput.value = storage.email;
-    messageInput.value = storage.message;
+    emailInput.value = storage.email || '';
+    messageInput.value = storage.message || '';
   }
 }
